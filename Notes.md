@@ -43,7 +43,15 @@ Interface:
   "back" should go one step backward
   "combined fiction", "combined nonfiction", "hardcover fiction", "hardcover nonfiction", etc. should list corresponding titles
 
-  
+---------
 
+Lists should have books.
 
+Books should have authors, publishers, and descriptions
+
+----------
+
+THINGS TO DO!!!!
+
+Fix Casing in Interface to Title Case
 
