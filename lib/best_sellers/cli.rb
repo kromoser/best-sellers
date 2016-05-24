@@ -14,6 +14,10 @@ class BestSellers::CLI
 
     puts "This Week's Best Sellers Lists:"
     @lists = BestSellers::Lists.all
+
+    @lists.each_with_index do |value, index|
+      puts "#{index + 1}. #{value.name}"
+    end
   end
 
   def choose_list
@@ -22,24 +26,26 @@ class BestSellers::CLI
     input = nil
     while input != "exit"
       input = gets.strip.downcase
-      if input == "1"
-        puts "Combined Fiction List!"
-      elsif input == "2"
-        puts "Combined Nonfiction List"
-      elsif input == "3"
-        puts "Hardcover Fiction List!"
-      elsif input == "4"
-        puts "Hardcover Nonfiction List"
-      elsif input == "5"
-        puts "Paperback Trade Fiction List"
-      elsif input == "6"
-        puts "Paperback Mass-Market Fiction List!"
-      elsif input == "7"
-        puts "Paperback Nonfiction List"
-      elsif input == "8"
-        puts "E-Book Fiction List!"
-      elsif input == "9"
-        puts "E-Book Nonfiction List"
+      if input.to_i > 0
+        puts @lists[input.to_i - 1]
+      #if input == "1"
+      #  puts "Combined Fiction List!"
+      #elsif input == "2"
+      #  puts "Combined Nonfiction List"
+      #elsif input == "3"
+      #  puts "Hardcover Fiction List!"
+      #elsif input == "4"
+      #  puts "Hardcover Nonfiction List"
+      #elsif input == "5"
+      #  puts "Paperback Trade Fiction List"
+      #elsif input == "6"
+      #  puts "Paperback Mass-Market Fiction List!"
+      #elsif input == "7"
+      #  puts "Paperback Nonfiction List"
+      #elsif input == "8"
+      #  puts "E-Book Fiction List!"
+      #elsif input == "9"
+      #  puts "E-Book Nonfiction List"
       elsif input == "all"
         display_lists
       elsif input == "exit"

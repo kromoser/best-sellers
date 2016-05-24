@@ -1,32 +1,21 @@
 class BestSellers::Lists
-  attr_accessor :name
+  attr_accessor :name, :books
+
 
   def self.all
 
-    @@all = []
+    all_lists = []
     # This should return all Best Sellers lists
 
-    #puts <<-DOC.gsub /^\s*/, ''
-    #  1. Combined Print & E-Book Fiction
-    #  2. Combined Print & E-Book Nonfiction
-    #  3. Hardcover Fiction
-    #  4. Hardcover Nonfcition
-    #  5. Paperback Trade Fiction
-    #  6. Paperback Mass-Market Fiction
-    #  7. Paperback Nonfiction
-    #  8. E-Book Fiction
-    #  9. E-Book Nonfiction
-    #DOC
-
-    @@all << list_1 = self.new
-    @@all << list_2 = self.new
-    @@all << list_3 = self.new
-    @@all << list_4 = self.new
-    @@all << list_5 = self.new
-    @@all << list_6 = self.new
-    @@all << list_7 = self.new
-    @@all << list_8 = self.new
-    @@all << list_9 = self.new
+    # all_lists << list_1 = self.new
+    # all_lists << list_2 = self.new
+    # all_lists << list_3 = self.new
+    # all_lists << list_4 = self.new
+    # all_lists << list_5 = self.new
+    # all_lists << list_6 = self.new
+    # all_lists << list_7 = self.new
+    # all_lists << list_8 = self.new
+    # all_lists << list_9 = self.new
 
     list_1.name = "Combined Print and E-Book Fiction"
     list_2.name = "Combined Print & E-Book Nonfiction"
@@ -38,11 +27,15 @@ class BestSellers::Lists
     list_8.name = "E-Book Fiction"
     list_9.name = "E-Book Nonfiction"
 
-    @@all.each_with_index do |value, index|
-      puts "#{index + 1}. #{value.name}"
-    end
+    all_lists
   end
 
+  def books
+    # This should take the lists and iterate through them, 
+    # create new Book instances,
+    # and associate
+
+  end
 
 
 end

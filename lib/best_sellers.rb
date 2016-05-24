@@ -1,3 +1,7 @@
+require "nokogiri"
+require "open-uri"
+require "pry"
+
 require_relative "best_sellers/version"
 
 #module BestSellers
