@@ -5,3 +5,4 @@ require_relative "best_sellers/version"
 #end
 
 require_relative './best_sellers/cli'
+require_relative './best_sellers/lists'

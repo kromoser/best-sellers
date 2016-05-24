@@ -7,24 +7,13 @@ class BestSellers::CLI
     
     display_lists
     choose_list
-    exit
+    # exit
   end
 
   def display_lists
 
     puts "This Week's Best Sellers Lists:"
-
-    puts <<-DOC.gsub /^\s*/, ''
-      1. Combined Print & E-Book Fiction
-      2. Combined Print & E-Book Nonfiction
-      3. Hardcover Fiction
-      4. Hardcover Nonfcition
-      5. Paperback Trade Fiction
-      6. Paperback Mass-Market Fiction
-      7. Paperback Nonfiction
-      8. E-Book Fiction
-      9. E-Book Nonfiction
-    DOC
+    @lists = BestSellers::Lists.all
   end
 
   def choose_list
@@ -53,6 +42,8 @@ class BestSellers::CLI
         puts "E-Book Nonfiction List"
       elsif input == "all"
         display_lists
+      elsif input == "exit"
+        exit
       else 
         puts "Sorry, couldn't understand you. Please enter the number of list you'd like to see, 'all', or 'exit'"
       end
