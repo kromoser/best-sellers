@@ -27,7 +27,13 @@ class BestSellers::CLI
     while input != "exit"
       input = gets.strip.downcase
       if input.to_i > 0
-        puts @lists[input.to_i - 1]
+        puts "#{@lists[input.to_i - 1].name.upcase}:\n\n"
+        
+        @lists[input.to_i - 1].list_books.each.with_index(1) do |book, index|
+          
+          puts "#{index}. #{book.title}"
+          puts "By #{book.author}\n\n"
+        end
       #if input == "1"
       #  puts "Combined Fiction List!"
       #elsif input == "2"

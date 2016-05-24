@@ -98,12 +98,14 @@ class BestSellers::Lists
       book_section = sublist.css("tr.bookDetails td.summary span.bookName")
       
       book_section.each_with_index do |section, index|
-        book = BestSellers::Books.new
+        @books << book = BestSellers::Books.new
         book.title = sublist.css("tr.bookDetails td.summary span.bookName")[index].text.gsub(/,\s$/,"")
         book.author = sublist.css("tr.bookDetails td.summary")[index].text[/by\s(.*?)\(/, 1].gsub(/.\s$/,"")
         book.publisher = sublist.css("tr.bookDetails td.summary")[index].text[/\((.*?)\)/, 1].gsub(/.$/,"")
         
       end
+
+      @books
       
 
 
