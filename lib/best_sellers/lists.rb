@@ -1,3 +1,5 @@
+require_relative "books.rb"
+
 class BestSellers::Lists
   attr_accessor :name, :books, :list_url
 
@@ -93,11 +95,18 @@ class BestSellers::Lists
       html = open(self.list_url)
       sublist = Nokogiri::HTML(html)
 
-      book_section = sublist.css("tr.bookDetails")
+      book_section = sublist.css("tr.bookDetails td.summary span.bookName")
       
-      new_book = Books.new
+      book_section.each_with_index do |section, index|
+        book = BestSellers::Books.new
+        book.title = sublist.css("tr.bookDetails td.summary span.bookName")[index].text.gsub(/,\s$/,"")
+        book.author = sublist.css("tr.bookDetails td.summary")[index].text[/by\s(.*?)\(/, 1].gsub(/.\s$/,"")
+        book.publisher = sublist.css("tr.bookDetails td.summary")[index].text[/\((.*?)\)/, 1].gsub(/.$/,"")
+        
+      end
+      
 
-      
+
     # This should take the lists and iterate through them, 
     # create new Book instances (?),
     # and associate them with corresponding list
