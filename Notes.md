@@ -51,7 +51,4 @@ Books should have authors, publishers, and descriptions
 
 ----------
 
-THINGS TO DO!!!!
-
-Fix Casing in Interface to Title Case
 

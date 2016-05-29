@@ -1,5 +1,7 @@
 require "nokogiri"
+require "json"
 require "open-uri"
+require "open_uri_redirections"
 require "pry"
 
 require_relative "best_sellers/version"

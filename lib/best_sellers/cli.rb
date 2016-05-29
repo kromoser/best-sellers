@@ -2,7 +2,7 @@
 # CLI CONTROLLER #
 
 class BestSellers::CLI
-
+  attr_accessor :input_store
   def call
     
     display_lists
@@ -28,39 +28,53 @@ class BestSellers::CLI
       input = gets.strip.downcase
       if input.to_i > 0
         puts "#{@lists[input.to_i - 1].name.upcase}:\n\n"
-        
+
         @lists[input.to_i - 1].list_books.each.with_index(1) do |book, index|
           
           puts "#{index}. #{book.title}"
           puts "By #{book.author}\n\n"
         end
-      #if input == "1"
-      #  puts "Combined Fiction List!"
-      #elsif input == "2"
-      #  puts "Combined Nonfiction List"
-      #elsif input == "3"
-      #  puts "Hardcover Fiction List!"
-      #elsif input == "4"
-      #  puts "Hardcover Nonfiction List"
-      #elsif input == "5"
-      #  puts "Paperback Trade Fiction List"
-      #elsif input == "6"
-      #  puts "Paperback Mass-Market Fiction List!"
-      #elsif input == "7"
-      #  puts "Paperback Nonfiction List"
-      #elsif input == "8"
-      #  puts "E-Book Fiction List!"
-      #elsif input == "9"
-      #  puts "E-Book Nonfiction List"
+
+        @input_store = @lists[input.to_i - 1]
+        choose_sub_list
+      
       elsif input == "all"
         display_lists
       elsif input == "exit"
         exit
       else 
-        puts "Sorry, couldn't understand you. Please enter the number of list you'd like to see, 'all', or 'exit'"
+        puts "Sorry, I couldn't understand you. Please enter the number of list you'd like to see, 'all', or 'exit'"
       end
     end
   end
+
+  def choose_sub_list
+    puts "Which book would you like to learn more about?"
+    input = nil
+    while input != "exit"
+      input = gets.strip.downcase
+      input_store = @input_store
+
+      if input.to_i > 0
+        puts "#{@lists[input_store.to_i].list_books[input].title}"
+         
+        
+      elsif input == "back"
+        call
+      elsif input == "all"
+        display_lists
+      elsif input == "exit"
+        exit
+      else
+        puts "Sorry, I couldn't understand you. Please enter the number of book you'd like to view, 'all', 'back', or 'exit'"
+      end
+    end
+
+        
+      
+  end
+
+ 
 
   def exit
     puts "Goodbye! Check back next week for updated lists!"
