@@ -17,7 +17,7 @@ class BestSellers::Lists
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     uri.query = URI.encode_www_form({
-      "api-key" => "37542fd5a567486a8d925ef7832cf5e0"
+      "api-key" => "fake key"
     })
     request = Net::HTTP::Get.new(uri.request_uri)
     @result = JSON.parse(http.request(request).body)
